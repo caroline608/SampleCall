@@ -9,14 +9,16 @@
 import Foundation
 
 
-struct Pokemon: Codable {
+struct PokemonModel: Codable {
     let count: Int
     let next: String
-    let results: [ResultWrapper]
+    let results: [Pokemons]
     
 }
 
-struct ResultWrapper: Codable {
+struct Pokemons: Codable {
     let name: String?
     let url: URL?
 }
+
+
