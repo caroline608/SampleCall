@@ -11,12 +11,14 @@ import RxSwift
 import RxCocoa
 import IGListKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
-    var pokemonArray = [Pokemons]()
+//    var pokemonArray = [Pokemons]()
+    let apiClient = APIClient()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -24,28 +26,25 @@ class ViewController: UIViewController {
 //        tableView.dataSource = self
 //        tableView.delegate = self
         loadPokemons()
-        
-        let items : Observable<[Pokemons]> = Observable.just(pokemonArray)
-        items
-            .bind(to:tableView.rx.items(cellIdentifier: "tvCell")) {
-                (_,pokemon,cell) in
-                cell.textLabel?.text = pokemon.name
-                cell.detailTextLabel?.text = String(describing:pokemon.url!)
-            }.disposed(by: disposeBag)
-        
-        
-//        tableView.rx.modelSelected(Pokemons.self).subscribe(onNext: { (pokemon) in
-//            print(pokemon.name ?? String.self)
-//        }).disposed(by: disposeBag)
-//
 
     }
     
     
     
-    
     func loadPokemons() {
-        //implementing URLSession(NetworkCall)
+        searchBar.rx.text.asObservable()
+            .map { ($0)?.lowercased() ?? "" }
+            .map { PokemonRequest(name: $0)}
+            .flatMap { request -> Observable<[PokemonModel]> in
+                return self.apiClient.send(apiRequest: request)
+            }
+            .bind(to: tableView.rx.items(cellIdentifier: "tvCell")) {
+                index,pokemon,cell in
+                cell.textLabel?.text = pokemon.results
+            }.disposed(by: disposeBag)
+    }
+/*    func loadPokemons() {
+       //implementing URLSession(NetworkCall)
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/") else {return}
          URLSession(configuration:URLSessionConfiguration.default).dataTask(with: url) { (data,response,error) in
             if error != nil {
@@ -67,26 +66,28 @@ class ViewController: UIViewController {
             }
             //End implementing URLSession
         }.resume()
-        
+
     }
-    
+
 
 
 }
 
-//extension ViewController: UITableViewDataSource, UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print(pokemonArray.count)
-//        return pokemonArray.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let poke = pokemonArray[indexPath.row]
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "tvCell", for: indexPath)
-//        cell.textLabel?.text = poke.name!
-//        cell.detailTextLabel?.text = String(describing:poke.url!)
-//        return cell
-//    }
-//
-//
-//}
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(pokemonArray.count)
+        return pokemonArray.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let poke = pokemonArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tvCell", for: indexPath)
+        cell.textLabel?.text = poke.name!
+        cell.detailTextLabel?.text = String(describing:poke.url!)
+        return cell
+    }
+
+*/
+    
+}
+

@@ -18,6 +18,9 @@
 		7E33DF772268DA1E000CA4E3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E33DF752268DA1E000CA4E3 /* RxSwift.framework */; };
 		7E33DF782268DA1E000CA4E3 /* IGListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E33DF762268DA1E000CA4E3 /* IGListKit.framework */; };
 		7E33DF7B22690D3F000CA4E3 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E33DF7A22690D3F000CA4E3 /* RxCocoa.framework */; };
+		7E33DF7D226A5640000CA4E3 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E33DF7C226A5640000CA4E3 /* APIClient.swift */; };
+		7E33DF7F226A7B3B000CA4E3 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E33DF7E226A7B3B000CA4E3 /* APIRequest.swift */; };
+		7E33DF81226A7B71000CA4E3 /* PokemonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E33DF80226A7B71000CA4E3 /* PokemonRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		7E33DF752268DA1E000CA4E3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		7E33DF762268DA1E000CA4E3 /* IGListKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IGListKit.framework; path = Carthage/Build/iOS/IGListKit.framework; sourceTree = "<group>"; };
 		7E33DF7A22690D3F000CA4E3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		7E33DF7C226A5640000CA4E3 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		7E33DF7E226A7B3B000CA4E3 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		7E33DF80226A7B71000CA4E3 /* PokemonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,9 @@
 				7E33DF4B22661A1E000CA4E3 /* Assets.xcassets */,
 				7E33DF4D22661A1E000CA4E3 /* LaunchScreen.storyboard */,
 				7E33DF5022661A1E000CA4E3 /* Info.plist */,
+				7E33DF7C226A5640000CA4E3 /* APIClient.swift */,
+				7E33DF7E226A7B3B000CA4E3 /* APIRequest.swift */,
+				7E33DF80226A7B71000CA4E3 /* PokemonRequest.swift */,
 			);
 			path = SampleAPICall;
 			sourceTree = "<group>";
@@ -306,6 +315,9 @@
 				7E33DF4722661A1C000CA4E3 /* ViewController.swift in Sources */,
 				7E33DF732266234F000CA4E3 /* PokemonModel.swift in Sources */,
 				7E33DF4522661A1C000CA4E3 /* AppDelegate.swift in Sources */,
+				7E33DF7F226A7B3B000CA4E3 /* APIRequest.swift in Sources */,
+				7E33DF7D226A5640000CA4E3 /* APIClient.swift in Sources */,
+				7E33DF81226A7B71000CA4E3 /* PokemonRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
